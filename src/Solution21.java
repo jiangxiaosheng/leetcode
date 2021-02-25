@@ -1,4 +1,4 @@
-class Solution {
+class Solution21 {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode h1 = l1, h2 = l2, result = new ListNode(), cur = result;
         while (h1 != null || h2 != null) {
