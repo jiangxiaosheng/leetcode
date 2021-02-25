@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode h1 = l1, h2 = l2, result = new ListNode(), cur = result;
@@ -22,10 +20,5 @@ class Solution {
             cur = cur.next;
         }
         return result.next;
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(solution.frequencySort("tree"));
     }
 }
