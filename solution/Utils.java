@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Utils {
     /*
         树的结构示例：
@@ -119,6 +124,22 @@ public class Utils {
         }
         System.out.print("\b\b\n");
     }
+
+    public static List<Integer> inOrderWalk(TreeNode root) {
+        TreeNode curr = root;
+        List<Integer> res = new ArrayList<>();
+        Deque<TreeNode> stk = new LinkedList<>();
+        while (curr != null || !stk.isEmpty()) {
+            while (curr != null) {
+                stk.push(curr);
+                curr = curr.left;
+            }
+            curr = stk.pop();
+            res.add(curr.val);
+            curr = curr.right;
+        }
+        return res;
+    }
 }
 
 class ListNode {
@@ -131,9 +152,19 @@ class ListNode {
     }
 }
 
-class TreeNode {
+class TreeNode implements Comparable<TreeNode> {
     int val;
     TreeNode left;
     TreeNode right;
     TreeNode(int x) { val = x; }
+    TreeNode() {}
+
+    public void setValue(int v) {
+        val = v;
+    }
+
+    @Override
+    public int compareTo(TreeNode o) {
+        return Integer.compare(val, o.val);
+    }
 }
