@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 public class Solution205 {
     // "badc", "baba"
+    // TODO still need understanding
     public boolean isIsomorphic(String s, String t) {
         int[] preIndexOfS = new int[256];
         int[] preIndexOfT = new int[256];
