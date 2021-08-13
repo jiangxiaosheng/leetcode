@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Utils {
     /*
@@ -125,6 +122,39 @@ public class Utils {
         System.out.print("\b\b\n");
     }
 
+    public static TreeNode buildTree(Integer[] vals) {
+        if (vals.length == 0 || vals[0] == null) return null;
+        Queue<TreeNode> queue = new LinkedList<>();
+        int p = 0;
+        TreeNode root = new TreeNode(vals[p++]);
+        queue.offer(root);
+        while (p < vals.length) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode curr = queue.poll();
+                if (p >= vals.length) break;
+                Integer v1 = vals[p++], v2 = null;
+                if (p < vals.length)
+                    v2 = vals[p++];
+                if (v1 != null) {
+                    curr.left = new TreeNode(v1);
+                    queue.offer(curr.left);
+                }
+                if (v2 != null) {
+                    curr.right = new TreeNode(v2);
+                    queue.offer(curr.right);
+                }
+            }
+        }
+        return root;
+    }
+
+    public static <T> void printStack(Stack<T> stack) {
+        while (!stack.empty()) {
+            System.out.println(stack.pop());
+        }
+    }
+
     public static List<Integer> inOrderWalk(TreeNode root) {
         TreeNode curr = root;
         List<Integer> res = new ArrayList<>();
@@ -173,6 +203,11 @@ class TreeNode implements Comparable<TreeNode> {
     @Override
     public int compareTo(TreeNode o) {
         return Integer.compare(val, o.val);
+    }
+
+    @Override
+    public String toString() {
+        return val + "";
     }
 }
 

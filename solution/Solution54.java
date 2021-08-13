@@ -16,7 +16,6 @@ public class Solution54 {
         while (idx < m * n) {
             res.add(matrix[pos[0]][pos[1]]);
             visited[pos[0]][pos[1]] = true;
-            System.out.println(matrix[pos[0]][pos[1]]);
             validAndTurnRight(pos);
             idx++;
         }
